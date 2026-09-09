@@ -3,11 +3,12 @@ import threading
 import time
 import pyautogui
 import keyboard
+import ctypes
 
 class AutoClickerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Panel de Control - AutoClicker")
+        self.root.title("Panel - AutoClicker")
         self.root.geometry("350x200")
         self.root.attributes("-topmost", True)
         
@@ -50,9 +51,31 @@ class AutoClickerApp:
         self.lbl_estado.config(text="DETENIDO", fg="red")
         self.btn_iniciar.config(state=tk.NORMAL)
 
+    def mostrar_marca_visual(self):
+        marca = tk.Toplevel(self.root)
+        marca.overrideredirect(True)
+        marca.attributes("-topmost", True)
+        marca.attributes("-transparentcolor", "white")
+        marca.geometry(f"50x50+{self.x-25}+{self.y-25}")
+        
+        canvas = tk.Canvas(marca, width=50, height=50, bg="white", highlightthickness=0)
+        canvas.pack()
+        canvas.create_oval(5, 5, 45, 45, outline="red", width=4)
+        
+        self.root.after(300, marca.destroy)
+
+    def click_rapido(self):
+        pos_x, pos_y = pyautogui.position()
+        
+        ctypes.windll.user32.SetCursorPos(self.x, self.y)
+        ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)
+        ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)
+        ctypes.windll.user32.SetCursorPos(pos_x, pos_y)
+
     def bucle(self):
         while self.corriendo:
-            pyautogui.click(x=self.x, y=self.y)
+            self.mostrar_marca_visual()
+            self.click_rapido()
             time.sleep(self.pausa)
 
 if __name__ == "__main__":
