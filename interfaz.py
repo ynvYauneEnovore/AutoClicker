@@ -65,7 +65,6 @@ class AutoClickerApp:
         self.root.after(300, marca.destroy)
 
     def click_rapido(self):
-        hwnd_actual = ctypes.windll.user32.GetForegroundWindow()
         pos_x, pos_y = pyautogui.position()
         
         ctypes.windll.user32.SetCursorPos(self.x, self.y)
@@ -73,7 +72,8 @@ class AutoClickerApp:
         ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)
         
         ctypes.windll.user32.SetCursorPos(pos_x, pos_y)
-        ctypes.windll.user32.SetForegroundWindow(hwnd_actual)
+        ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)
+        ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)
 
     def bucle(self):
         while self.corriendo:
