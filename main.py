@@ -1,18 +1,17 @@
 import pyautogui
 import time
 
-def click_coordenadas(x, y, pausa):
-    print(f"Iniciando auto-clicker en las coordenadas X: {x}, Y: {y}")
-    print(f"Hará un clic cada {pausa} segundos.")
-    print("Presiona Ctrl+C en esta consola para detenerlo.")
+def click_coordenadas_visible(x, y, pausa):
+    print(f"Iniciando auto-clicker en X: {x}, Y: {y}")
     
     try:
         while True:
-            pyautogui.click(x=x, y=y)
+            pyautogui.moveTo(x, y, duration=1.5)
+            pyautogui.click()
             time.sleep(pausa)
             
     except KeyboardInterrupt:
-        print("\nAuto-clicker finalizado por el usuario.")
+        print("\nFinalizado.")
 
 if __name__ == "__main__":
-    click_coordenadas(367, 501, 10)
+    click_coordenadas_visible(367, 501, 10)
