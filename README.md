@@ -1,4 +1,4 @@
-# AutoClicker Enterprise
+# AutoClicker
 
 Sistema de automatización de eventos de puntero de alto rendimiento para entornos Windows, diseñado para operaciones continuas en flujos de trabajo multitarea sin degradación de productividad.
 
@@ -6,9 +6,9 @@ Desarrollado por **Yovan Enovore**.
 
 ---
 
-## Resumen Ejecutivo
+## Resumen
 
-AutoClicker Enterprise resuelve la problemática inherente a los sistemas de automatización de clics estándar: la pérdida del foco de entrada y el bloqueo operativo del usuario. Mediante la integración con las interfaces de bajo nivel de la API de Windows (`user32.dll` a través de `ctypes`), el motor traslada el cursor, despacha el evento de interacción física y restablece instantáneamente el cursor y el foco a la posición original en una ventana de milisegundos.
+AutoClicker resuelve la problemática inherente a los sistemas de automatización de clics estándar: la pérdida del foco de entrada y el bloqueo operativo del usuario. Mediante la integración con las interfaces de bajo nivel de la API de Windows (`user32.dll` a través de `ctypes`), el motor traslada el cursor, despacha el evento de interacción física y restablece instantáneamente el cursor y el foco a la posición original en una ventana de milisegundos.
 
 Esta arquitectura permite que operadores técnicos, desarrolladores y analistas mantengan actividades simultáneas de alta concentración (como escritura en terminales, depuración en entornos de desarrollo o procesamiento de datos) mientras las secuencias automatizadas se ejecutan de manera continua.
 
